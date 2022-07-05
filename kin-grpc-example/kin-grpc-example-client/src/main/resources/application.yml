@@ -1,0 +1,19 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: grpc-client
+  cloud:
+    nacos:
+      discovery:
+        register-enabled: true
+        server-addr: localhost:8848
+grpc:
+  client:
+    grpc-server:
+#      address: 'static://127.0.0.1:10011'
+      address: 'discovery:///grpc-server'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+#      defaultLoadBalancingPolicy: pick_first
